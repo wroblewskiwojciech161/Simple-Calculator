@@ -15,11 +15,14 @@ import javax.swing.JPanel;
 
 public class GUICalculator implements ActionListener {
 
+	//creating frame
 	JFrame frame = new JFrame();
+	//creating panel
 	JPanel panel = new JPanel();
+	//creating text area
 	JTextArea textArea = new JTextArea();
 	
-	
+	//add create button objects
 	JButton button1 = new JButton("button1");
 	JButton button2 = new JButton("button2");
 	JButton button3 = new JButton("button3");
@@ -31,6 +34,7 @@ public class GUICalculator implements ActionListener {
 	JButton button9 = new JButton("button9");
 	JButton button0 = new JButton("button0");
 	JButton buttonAdd = new JButton("buttonAdd");
+	
 	JButton buttonSub = new JButton("buttonSub");
 	JButton buttonMult = new JButton("buttonMult");
 	JButton buttonDiv = new JButton("buttonDiv");
@@ -39,6 +43,8 @@ public class GUICalculator implements ActionListener {
 	JButton buttonEqual = new JButton("buttonEqual");
 	JButton buttonBack = new JButton("buttonBack");
 	
+	//constructor
+	//configuration of frame,button,text area features
 	public GUICalculator() {
 		frame.setSize(400,850);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,20 +53,23 @@ public class GUICalculator implements ActionListener {
 		frame.add(panel);
 		frame.setVisible(true);
 		
+		//adding textArea to the panel
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.add(textArea);
 		panel.setVisible(true);
 		
+		//creating a font style
 		Font font = new Font ("arial",Font.BOLD,40);
 		Color myColor = Color.decode("#2153C2");
 		
+		//configuration of text area
 		textArea.setBackground(myColor);
 		textArea.setFont(font);
 		textArea.setForeground(Color.WHITE);
 		textArea.setPreferredSize(new Dimension (340,100));
 		textArea.setLineWrap(true); 
 		
-	
+		//adding image and setting size of buttons
 		button1.setPreferredSize(new Dimension(110,110));
 		button1.setIcon(new ImageIcon("src\\main\\resources\\button1.png"));
 		
@@ -116,6 +125,7 @@ public class GUICalculator implements ActionListener {
 		buttonBack.setPreferredSize(new Dimension(110,110));
 		buttonBack.setIcon(new ImageIcon("src\\main\\resources\\backspace.png"));
 
+		//adding buttons to the panel
 		panel.add(button1);  panel.add(button2);  panel.add(button3);  panel.add(button4); panel.add(button5);
 		panel.add(button6);  panel.add(button7);  panel.add(button8);  panel.add(button9); panel.add(buttonClear);
 		panel.add(button0);  panel.add(buttonBack); 
@@ -123,7 +133,7 @@ public class GUICalculator implements ActionListener {
 		panel.add(buttonAdd);  panel.add(buttonSub);  panel.add(buttonMult);
 		panel.add(buttonDiv);  panel.add(buttonDot);  panel.add(buttonEqual);
 		
-		
+		//adding action listeners to buttons
 		button1.addActionListener((ActionListener) this);
 		button2.addActionListener((ActionListener) this);
 		button3.addActionListener((ActionListener) this);
@@ -143,20 +153,24 @@ public class GUICalculator implements ActionListener {
 		buttonClear.addActionListener((ActionListener) this);
 		buttonBack.addActionListener((ActionListener) this);
 		
-		
+		// adding visibility to the frame
 		frame.setVisible(true);
 			
 	}
 	
+	//program's main variables
+	//informing about type of calculation
 	static int calculation;
+	//variables of counting process
 	static double firstNumber;
 	static double secondNumber;
 	static double result;
 	static String operations;
+	//variable stores final answer  on text area
 	static String answer;
 	static boolean equalPressed =false;
 	
-	
+	//method that disables the buttons after operation
 	public void disabled() {
 		Border textBorder= BorderFactory.createLineBorder(Color.RED,4);
 		
@@ -179,6 +193,7 @@ public class GUICalculator implements ActionListener {
 		buttonEqual.setBorder(textBorder);
 
 	}
+	//method that enables the buttons after clearing
 	public void enabled() {
 		
 		button1.setBorder(null);
@@ -201,7 +216,7 @@ public class GUICalculator implements ActionListener {
 
 	}
 	
-	
+	//method that clears the variables and prepares textarea to next counting
 	public void clear() {
 		
 		 textArea.setText("");
@@ -213,7 +228,7 @@ public class GUICalculator implements ActionListener {
 		 enabled();
 	}
 	
-	
+	// ONCLICK events of each buttons
 	public void actionPerformed(ActionEvent e) {
 	
 		 if(e.getActionCommand().contentEquals("buttonClear")) {
@@ -364,6 +379,7 @@ public class GUICalculator implements ActionListener {
 			 
 			 
 		}
+		 //buttons backspace  gets data from textarea cuts the last char and returns as a element of counting
 		else if(e.getActionCommand().contentEquals("buttonBack")) {
 			
 			

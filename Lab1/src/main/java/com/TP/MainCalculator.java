@@ -7,7 +7,7 @@ public class MainCalculator {
 
 	public static void main(String[] args) {
 		
-		
+		//creating GUI object
 		 GUICalculator calcGUI = new GUICalculator();
 		
 
